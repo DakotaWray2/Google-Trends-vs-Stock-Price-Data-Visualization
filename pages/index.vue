@@ -18,6 +18,7 @@
             <p style="font-family: 'Droid Serif', Serif; font-size: 15px">
               Dakota Wray
             </p>
+            {{ JSON.stringify(posts) }}
           </div>
           <ul class="divide-y divide-gray-200 dark:divide-gray-700">
             <li
@@ -33,26 +34,26 @@
                     <dd
                       style="font-family: 'Droid Serif', Serif; font-size: 15px"
                     >
-                      <time datetime="2021-01-12">{{ contractor }}</time>
+                      <time datetime="2021-01-12">{{ contractor.Name }}</time>
                     </dd>
                   </dl>
                   <div class="space-y-5 xl:col-span-3">
                     <div class="space-y-6">
                       <div></div>
                       <div
-                        class="prose text-gray-500 max-w-none dark:text-gray-400"
+                        style="
+                          font-family: 'Droid Serif', Serif;
+                          font-size: 15px;
+                        "
                       >
-                        Looking for a performant, out of the box template, with
-                        all the best in web technology to support your blogging
-                        needs? Checkout the Tailwind Nextjs Starter Blog
-                        template.
+                        {{ contractor.Text }}
                       </div>
                     </div>
                     <div class="">
                       <client-only>
                         <my-line
-                          width="70"
-                          height="35"
+                          :width="70"
+                          :height="35"
                           v-if="showLine"
                           :options="options"
                           :mydata="lineData[index]"
@@ -1315,20 +1316,92 @@ export default {
     } // some options
     return { lineData, options }
   },
+  async fetch() {
+    this.posts = await fetch(
+      'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-histories?symbol=LMT&from=1329963601&to=1614030886&events=div&interval=3mo&region=US',
+      {
+        method: 'GET',
+        headers: {
+          'x-rapidapi-key':
+            'b7320aae4amsh93a905b970800cep100eecjsn16223fcab47d',
+          'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com',
+        },
+      }
+    )
+      .then((response) => {
+        console.log(response)
+        return response.json()
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  },
+  fetchOnServer: true,
   data() {
     return {
+      posts: [],
       showLine: false,
       contractors: [
-        '1. Lockheed Martin Corp.',
-        '2. Boeing Co.',
-        '3. General Dynamics Corp.',
-        '4. Raytheon Co.',
-        '5. Northrup Grumman Corp.',
-        '6. United Technologies Corp.',
-        '7. Huntington Ingalls Industries Inc.',
-        '8. Humana Inc.',
-        '9. Harris Corp.',
-        '10. BAE Systems Plc',
+        {
+          Name: '1. Lockheed Martin Corp.',
+          Ticker: 'LMT',
+          Text:
+            'Lockheed Martin Corporation is an American aerospace, arms, defense, security, and advanced technologies company with worldwide interests. It was formed by the merger of Lockheed Corporation with Martin Marietta in March 1995. It is headquartered in North Bethesda, Maryland, in the Washington, D.C., area.',
+        },
+        {
+          Name: '2. Boeing Co.',
+          Ticker: 'BA',
+          Text:
+            'The Boeing Company is an American multinational corporation that designs, manufactures, and sells airplanes, rotorcraft, rockets, satellites, telecommunications equipment, and missiles worldwide. The company also provides leasing and product support services.',
+        },
+        {
+          Name: '3. General Dynamics Corp.',
+          Ticker: 'GD',
+          Text:
+            'General Dynamics Corporation is an American aerospace and defense corporation. As of 2019, it was the fifth-largest defense contractor in the United States, and the sixth-largest in the world, by sales. The company ranked No. 92 in the 2019 Fortune 500 list of the largest United States corporations by total revenue.',
+        },
+        {
+          Name: '4. Raytheon Co.',
+          Ticker: 'RTX',
+          Text:
+            'The Raytheon Company was a major U.S. defense contractor and industrial corporation with core manufacturing concentrations in weapons and military and commercial electronics. It was previously involved in corporate and special-mission aircraft until early 2007.',
+        },
+        {
+          Name: '5. Northrup Grumman Corp.',
+          Ticker: 'NOC',
+          Text:
+            "Northrop Grumman Corporation is an American global aerospace and defense technology company. With 90,000 employees and an annual revenue in excess of $30 billion, it is one of the world's largest weapons manufacturers and military technology providers.",
+        },
+        {
+          Name: '6. United Technologies Corp.',
+          Ticker: 'UTX',
+          Text:
+            'United Technologies Corporation was an American multinational conglomerate headquartered in Farmington, Connecticut. It merged with the Raytheon Company in April 2020 to form Raytheon Technologies.',
+        },
+        {
+          Name: '7. Huntington Ingalls Industries Inc.',
+          Ticker: 'HII',
+          Text:
+            'Huntington Ingalls Industries is America’s largest military shipbuilding company and a provider of professional services to partners in government and industry. HII, ranked No. 371 on the Fortune 500, was formed on March 31, 2011, as a spin-off of Northrop Grumman.',
+        },
+        {
+          Name: '8. Humana Inc.',
+          Ticker: 'HUM',
+          Text:
+            'Humana Inc. is a for-profit American health insurance company based in Louisville, Kentucky. As of 2020 Humana had over 20 million members in the U.S., reported a 2019 revenue of US$56.9 billion, and had 46,000 employees.',
+        },
+        {
+          Name: '9. Harris Corp.',
+          Ticker: 'LHX',
+          Text:
+            'Harris Corporation was an American technology company, defense contractor, and information technology services provider that produced wireless equipment, tactical radios, electronic systems, night vision equipment and both terrestrial and spaceborne antennas for use in the government, defense and commercial sectors.',
+        },
+        {
+          Name: '10. BAE Systems Plc',
+          Ticker: 'BAESY',
+          Text:
+            'BAE Systems plc is a British multinational arms, security, and aerospace company. Its headquarters are in London and Farnborough in the United Kingdom with operations worldwide.',
+        },
       ],
     }
   },
