@@ -38,17 +38,11 @@
                     </dd>
                   </dl>
                   <div class="space-y-5 xl:col-span-3">
-                    <div class="space-y-6">
-                      <div
-                        style="
-                          font-family: 'Droid Serif', Serif;
-                          font-size: 13px;
-                        "
-                      >
-                        {{ contractor.Text }}
-                        <br />
-                        {{ contractor.Stock }}
-                      </div>
+                    <div
+                      style="font-family: 'Droid Serif', Serif; font-size: 13px"
+                      class="space-y-6"
+                    >
+                      {{ contractor.Text }}
                     </div>
                     <div class="">
                       <client-only>
@@ -89,6 +83,16 @@ export default {
             time: {
               unit: 'year',
               // unitStepSize: 10,
+            },
+          },
+        ],
+        yAxes: [
+          { id: 'A', position: 'left' },
+          {
+            id: 'B',
+            position: 'right',
+            gridLines: {
+              display: false,
             },
           },
         ],
@@ -214,10 +218,11 @@ export default {
                 { x: '2021-01', y: 63 },
                 { x: '2021-02', y: 60 },
               ],
-              label: 'Google Trend',
+              label: 'Google Search Trend',
               borderColor: '#3e95cd',
               fill: false,
               pointRadius: 0,
+              yAxisID: 'B',
             },
           ],
         },
@@ -336,10 +341,11 @@ export default {
                 { x: '2021-01', y: 24 },
                 { x: '2021-02', y: 20 },
               ],
-              label: 'Google Trend',
+              label: 'Google Search Trend',
               borderColor: '#3e95cd',
               fill: false,
               pointRadius: 0,
+              yAxisID: 'B',
             },
           ],
         },
@@ -458,10 +464,11 @@ export default {
                 { x: '2021-01', y: 44 },
                 { x: '2021-02', y: 55 },
               ],
-              label: 'Google Trend',
+              label: 'Google Search Trend',
               borderColor: '#3e95cd',
               fill: false,
               pointRadius: 0,
+              yAxisID: 'B',
             },
           ],
         },
@@ -580,10 +587,11 @@ export default {
                 { x: '2021-01', y: 47 },
                 { x: '2021-02', y: 60 },
               ],
-              label: 'Google Trend',
+              label: 'Google Search Trend',
               borderColor: '#3e95cd',
               fill: false,
               pointRadius: 0,
+              yAxisID: 'B',
             },
           ],
         },
@@ -702,10 +710,11 @@ export default {
                 { x: '2021-01', y: 17 },
                 { x: '2021-02', y: 40 },
               ],
-              label: 'Google Trend',
+              label: 'Google Search Trend',
               borderColor: '#3e95cd',
               fill: false,
               pointRadius: 0,
+              yAxisID: 'B',
             },
           ],
         },
@@ -824,10 +833,11 @@ export default {
                 { x: '2021-01', y: 15 },
                 { x: '2021-02', y: 16 },
               ],
-              label: 'Google Trend',
+              label: 'Google Search Trend',
               borderColor: '#3e95cd',
               fill: false,
               pointRadius: 0,
+              yAxisID: 'B',
             },
           ],
         },
@@ -946,10 +956,11 @@ export default {
                 { x: '2021-01', y: 23 },
                 { x: '2021-02', y: 9 },
               ],
-              label: 'Google Trend',
+              label: 'Google Search Trend',
               borderColor: '#3e95cd',
               fill: false,
               pointRadius: 0,
+              yAxisID: 'B',
             },
           ],
         },
@@ -1068,10 +1079,11 @@ export default {
                 { x: '2021-01', y: 82 },
                 { x: '2021-02', y: 76 },
               ],
-              label: 'Google Trend',
+              label: 'Google Search Trend',
               borderColor: '#3e95cd',
               fill: false,
               pointRadius: 0,
+              yAxisID: 'B',
             },
           ],
         },
@@ -1190,10 +1202,11 @@ export default {
                 { x: '2021-01', y: 21 },
                 { x: '2021-02', y: 19 },
               ],
-              label: 'Google Trend',
+              label: 'Google Search Trend',
               borderColor: '#3e95cd',
               fill: false,
               pointRadius: 0,
+              yAxisID: 'B',
             },
           ],
         },
@@ -1312,10 +1325,11 @@ export default {
                 { x: '2021-01', y: 31 },
                 { x: '2021-02', y: 48 },
               ],
-              label: 'Google Trend',
+              label: 'Google Search Trend',
               borderColor: '#3e95cd',
               fill: false,
               pointRadius: 0,
+              yAxisID: 'B',
             },
           ],
         },
@@ -1429,7 +1443,66 @@ export default {
   },
   fetchOnServer: true,
   mounted() {
-    this.showLine = true // showLine will only be set to true on the client. This keeps the DOM-tree in sync.
+    this.contractors[5].Stock = this.contractors[3].Stock
+    console.log(this.contractors[5].Stock)
+    this.contractors.forEach((v, i) => {
+      console.log(v)
+      const data = {
+        data: [
+          { x: '2012-02', y: 50 },
+          { x: '2012-05', y: 50 },
+          { x: '2012-08', y: 50 },
+          { x: '2012-11', y: 50 },
+          { x: '2013-02', y: 50 },
+          { x: '2013-05', y: 50 },
+          { x: '2013-08', y: 50 },
+          { x: '2013-11', y: 50 },
+          { x: '2014-02', y: 50 },
+          { x: '2014-05', y: 50 },
+          { x: '2014-08', y: 50 },
+          { x: '2014-11', y: 50 },
+          { x: '2015-02', y: 50 },
+          { x: '2015-05', y: 50 },
+          { x: '2015-08', y: 50 },
+          { x: '2015-11', y: 50 },
+          { x: '2016-02', y: 50 },
+          { x: '2016-05', y: 50 },
+          { x: '2016-08', y: 50 },
+          { x: '2016-11', y: 50 },
+          { x: '2017-02', y: 50 },
+          { x: '2017-05', y: 50 },
+          { x: '2017-08', y: 50 },
+          { x: '2017-11', y: 50 },
+          { x: '2018-02', y: 50 },
+          { x: '2018-05', y: 50 },
+          { x: '2018-08', y: 50 },
+          { x: '2018-11', y: 50 },
+          { x: '2019-02', y: 50 },
+          { x: '2019-05', y: 50 },
+          { x: '2019-08', y: 50 },
+          { x: '2019-11', y: 50 },
+          { x: '2020-02', y: 50 },
+          { x: '2020-05', y: 50 },
+          { x: '2020-08', y: 50 },
+          { x: '2020-11', y: 50 },
+          { x: '2021-02', y: 50 },
+        ],
+        label: 'Test',
+        borderColor: '#da0606',
+        fill: false,
+        pointRadius: 1,
+        yAxisID: 'A',
+      }
+      data.label = v.Ticker + ' Stock Price'
+      data.data.forEach((p, i) => {
+        p.y = v.Stock.chart.result[0].indicators.adjclose[0].adjclose[
+          i
+        ].toFixed(2)
+      })
+      this.lineData[i].datasets.push(data)
+    })
+    this.showLine = true
+    // showLine will only be set to true on the client. This keeps the DOM-tree in sync.
   },
 }
 </script>
