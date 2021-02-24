@@ -1359,11 +1359,11 @@ export default {
             'General Dynamics Corporation is an American aerospace and defense corporation. As of 2019, it was the fifth-largest defense contractor in the United States, and the sixth-largest in the world, by sales. The company ranked No. 92 in the 2019 Fortune 500 list of the largest United States corporations by total revenue.',
         },
         {
-          Name: '4. Raytheon Co.',
+          Name: '4. Raytheon Technologies Corp.',
           Ticker: 'RTX',
           Stock: null,
           Text:
-            'The Raytheon Company was a major U.S. defense contractor and industrial corporation with core manufacturing concentrations in weapons and military and commercial electronics. It was previously involved in corporate and special-mission aircraft until early 2007.',
+            'Raytheon Technologies Corporation is an American multinational conglomerate headquartered in Waltham, Massachusetts. The company is one of the largest aerospace, intelligence services providers, and defense manufacturers in the world by revenue and market capitalization.',
         },
         {
           Name: '5. Northrup Grumman Corp.',
@@ -1373,35 +1373,28 @@ export default {
             "Northrop Grumman Corporation is an American global aerospace and defense technology company. With 90,000 employees and an annual revenue in excess of $30 billion, it is one of the world's largest weapons manufacturers and military technology providers.",
         },
         {
-          Name: '6. United Technologies Corp.',
-          Ticker: 'UTX',
-          Stock: null,
-          Text:
-            'United Technologies Corporation was an American multinational conglomerate headquartered in Farmington, Connecticut. It merged with the Raytheon Company in April 2020 to form Raytheon Technologies.',
-        },
-        {
-          Name: '7. Huntington Ingalls Industries Inc.',
+          Name: '6. Huntington Ingalls Industries Inc.',
           Ticker: 'HII',
           Stock: null,
           Text:
             'Huntington Ingalls Industries is America’s largest military shipbuilding company and a provider of professional services to partners in government and industry. HII, ranked No. 371 on the Fortune 500, was formed on March 31, 2011, as a spin-off of Northrop Grumman.',
         },
         {
-          Name: '8. Humana Inc.',
+          Name: '7. Humana Inc.',
           Ticker: 'HUM',
           Stock: null,
           Text:
             'Humana Inc. is a for-profit American health insurance company based in Louisville, Kentucky. As of 2020 Humana had over 20 million members in the U.S., reported a 2019 revenue of US$56.9 billion, and had 46,000 employees.',
         },
         {
-          Name: '9. Harris Corp.',
+          Name: '8. Harris Corp.',
           Ticker: 'LHX',
           Stock: null,
           Text:
             'Harris Corporation was an American technology company, defense contractor, and information technology services provider that produced wireless equipment, tactical radios, electronic systems, night vision equipment and both terrestrial and spaceborne antennas for use in the government, defense and commercial sectors.',
         },
         {
-          Name: '10. BAE Systems Plc',
+          Name: '9. BAE Systems Plc',
           Ticker: 'BAESY',
           Stock: null,
           Text:
@@ -1412,8 +1405,8 @@ export default {
   },
   async fetch() {
     let i = 0
-    while (i < 10) {
-      if (i === 5) {
+    while (i < 9) {
+      if (i === 3) {
         i++
       } else {
         this.contractors[i].Stock = await fetch(
@@ -1424,7 +1417,7 @@ export default {
             method: 'GET',
             headers: {
               'x-rapidapi-key':
-                'b7320aae4amsh93a905b970800cep100eecjsn16223fcab47d',
+                '90761472f0mshb12e7b845787b9fp1e7225jsn432b697b35a4',
               'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com',
             },
           }
@@ -1443,62 +1436,65 @@ export default {
   },
   fetchOnServer: true,
   mounted() {
-    this.contractors[5].Stock = this.contractors[3].Stock
-    console.log(this.contractors[5].Stock)
+    console.log(this.contractors[3].Stock)
     this.contractors.forEach((v, i) => {
       console.log(v)
       const data = {
         data: [
-          { x: '2012-02', y: 50 },
-          { x: '2012-05', y: 50 },
-          { x: '2012-08', y: 50 },
-          { x: '2012-11', y: 50 },
-          { x: '2013-02', y: 50 },
-          { x: '2013-05', y: 50 },
-          { x: '2013-08', y: 50 },
-          { x: '2013-11', y: 50 },
-          { x: '2014-02', y: 50 },
-          { x: '2014-05', y: 50 },
-          { x: '2014-08', y: 50 },
-          { x: '2014-11', y: 50 },
-          { x: '2015-02', y: 50 },
-          { x: '2015-05', y: 50 },
-          { x: '2015-08', y: 50 },
-          { x: '2015-11', y: 50 },
-          { x: '2016-02', y: 50 },
-          { x: '2016-05', y: 50 },
-          { x: '2016-08', y: 50 },
-          { x: '2016-11', y: 50 },
-          { x: '2017-02', y: 50 },
-          { x: '2017-05', y: 50 },
-          { x: '2017-08', y: 50 },
-          { x: '2017-11', y: 50 },
-          { x: '2018-02', y: 50 },
-          { x: '2018-05', y: 50 },
-          { x: '2018-08', y: 50 },
-          { x: '2018-11', y: 50 },
-          { x: '2019-02', y: 50 },
-          { x: '2019-05', y: 50 },
-          { x: '2019-08', y: 50 },
-          { x: '2019-11', y: 50 },
-          { x: '2020-02', y: 50 },
-          { x: '2020-05', y: 50 },
-          { x: '2020-08', y: 50 },
-          { x: '2020-11', y: 50 },
-          { x: '2021-02', y: 50 },
+          { x: '2012-02', y: 42.55 },
+          { x: '2012-05', y: 38.78 },
+          { x: '2012-08', y: 40.48 },
+          { x: '2012-11', y: 41.42 },
+          { x: '2013-02', y: 47.14 },
+          { x: '2013-05', y: 49.7 },
+          { x: '2013-08', y: 48.95 },
+          { x: '2013-11', y: 57.07 },
+          { x: '2014-02', y: 62.28 },
+          { x: '2014-05', y: 62.18 },
+          { x: '2014-08', y: 57.1 },
+          { x: '2014-11', y: 62.53 },
+          { x: '2015-02', y: 64.07 },
+          { x: '2015-05', y: 60.97 },
+          { x: '2015-08', y: 49.23 },
+          { x: '2015-11', y: 53.49 },
+          { x: '2016-02', y: 53.8 },
+          { x: '2016-05', y: 56.42 },
+          { x: '2016-08', y: 57.91 },
+          { x: '2016-11', y: 57.72 },
+          { x: '2017-02', y: 64.34 },
+          { x: '2017-05', y: 68.42 },
+          { x: '2017-08', y: 67.52 },
+          { x: '2017-11', y: 74.65 },
+          { x: '2018-02', y: 74.03 },
+          { x: '2018-05', y: 73.98 },
+          { x: '2018-08', y: 83.17 },
+          { x: '2018-11', y: 63.71 },
+          { x: '2019-02', y: 77.57 },
+          { x: '2019-05', y: 78.79 },
+          { x: '2019-08', y: 83.11 },
+          { x: '2019-11', y: 91.63 },
+          { x: '2020-02', y: 57.99 },
+          { x: '2020-05', y: 60.72 },
+          { x: '2020-08', y: 57.12 },
+          { x: '2020-11', y: 71.51 },
+          { x: '2021-02', y: 73 },
         ],
         label: 'Test',
         borderColor: '#da0606',
+        backgroundColor: '#da060666',
         fill: false,
-        pointRadius: 1,
+        lineTension: 0,
+        pointRadius: 2.5,
         yAxisID: 'A',
       }
       data.label = v.Ticker + ' Stock Price'
-      data.data.forEach((p, i) => {
-        p.y = v.Stock.chart.result[0].indicators.adjclose[0].adjclose[
-          i
-        ].toFixed(2)
-      })
+      if (i !== 3) {
+        data.data.forEach((p, i) => {
+          p.y = v.Stock.chart.result[0].indicators.adjclose[0].adjclose[
+            i
+          ].toFixed(2)
+        })
+      }
       this.lineData[i].datasets.push(data)
     })
     this.showLine = true
