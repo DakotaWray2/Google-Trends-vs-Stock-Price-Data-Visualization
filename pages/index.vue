@@ -12,7 +12,7 @@
             </h1>
             <p style="font-family: 'Droid Serif', Serif; font-size: 15px">
               Visualizing the relationships between federal budget allocation,
-              stock price and google search trends for America's top 10 defense
+              stock price and google search trends for America's top defense
               contractors
             </p>
 
@@ -43,6 +43,17 @@
                       class="space-y-6"
                     >
                       {{ contractor.Text }}
+                      <br />
+                      <br />
+                      There is a
+                      <span style="color: green">positive </span>
+                      correlation between search trends and
+                      {{ contractor.Ticker }}'s stock price.
+                      <br />
+                      There is a
+                      <span style="color: red">negative </span>
+                      correlation between congressional funding and
+                      {{ contractor.Ticker }}'s stock price.
                     </div>
                     <div class="">
                       <client-only>
@@ -91,6 +102,9 @@ export default {
           {
             id: 'B',
             position: 'right',
+            ticks: {
+              display: false,
+            },
             gridLines: {
               display: false,
             },
