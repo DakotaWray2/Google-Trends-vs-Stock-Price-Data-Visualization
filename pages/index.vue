@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 <template>
   <div class="max-w-3xl px-4 mx-auto sm:px-6 xl:max-w-5xl xl:px-0">
     <div class="flex flex-col justify-between h-screen">
@@ -79,7 +80,7 @@
 </template>
 
 <script>
-// import _ from 'lodash'
+import _ from 'lodash'
 export default {
   asyncData() {
     const options = {
@@ -105,6 +106,13 @@ export default {
             ticks: {
               display: false,
             },
+            gridLines: {
+              display: false,
+            },
+          },
+          {
+            id: 'C',
+            position: 'right',
             gridLines: {
               display: false,
             },
@@ -1354,14 +1362,18 @@ export default {
         {
           Name: '1. Lockheed Martin Corp.',
           Ticker: 'LMT',
+          SpendSearch: 'Lockheed Martin',
           Stock: null,
+          Budget: null,
           Text:
             'Lockheed Martin Corporation is an American aerospace, arms, defense, security, and advanced technologies company with worldwide interests. It was formed by the merger of Lockheed Corporation with Martin Marietta in March 1995. It is headquartered in North Bethesda, Maryland, in the Washington, D.C., area.',
         },
         {
           Name: '2. Boeing Co.',
           Ticker: 'BA',
+          SpendSearch: 'Boeing',
           Stock: null,
+          Budget: null,
           Text:
             'The Boeing Company is an American multinational corporation that designs, manufactures, and sells airplanes, rotorcraft, rockets, satellites, telecommunications equipment, and missiles worldwide. The company also provides leasing and product support services.',
         },
@@ -1369,6 +1381,8 @@ export default {
           Name: '3. General Dynamics Corp.',
           Ticker: 'GD',
           Stock: null,
+          SpendSearch: 'General Dynamics',
+          Budget: null,
           Text:
             'General Dynamics Corporation is an American aerospace and defense corporation. As of 2019, it was the fifth-largest defense contractor in the United States, and the sixth-largest in the world, by sales. The company ranked No. 92 in the 2019 Fortune 500 list of the largest United States corporations by total revenue.',
         },
@@ -1376,6 +1390,8 @@ export default {
           Name: '4. Raytheon Technologies Corp.',
           Ticker: 'RTX',
           Stock: null,
+          SpendSearch: 'Raytheon',
+          Budget: null,
           Text:
             'Raytheon Technologies Corporation is an American multinational conglomerate headquartered in Waltham, Massachusetts. The company is one of the largest aerospace, intelligence services providers, and defense manufacturers in the world by revenue and market capitalization.',
         },
@@ -1383,6 +1399,8 @@ export default {
           Name: '5. Northrup Grumman Corp.',
           Ticker: 'NOC',
           Stock: null,
+          SpendSearch: 'Northrop Grumman Corporation',
+          Budget: null,
           Text:
             "Northrop Grumman Corporation is an American global aerospace and defense technology company. With 90,000 employees and an annual revenue in excess of $30 billion, it is one of the world's largest weapons manufacturers and military technology providers.",
         },
@@ -1390,6 +1408,8 @@ export default {
           Name: '6. Huntington Ingalls Industries Inc.',
           Ticker: 'HII',
           Stock: null,
+          SpendSearch: 'Huntington Ingalls',
+          Budget: null,
           Text:
             'Huntington Ingalls Industries is America’s largest military shipbuilding company and a provider of professional services to partners in government and industry. HII, ranked No. 371 on the Fortune 500, was formed on March 31, 2011, as a spin-off of Northrop Grumman.',
         },
@@ -1397,6 +1417,8 @@ export default {
           Name: '7. Humana Inc.',
           Ticker: 'HUM',
           Stock: null,
+          SpendSearch: 'Humana',
+          Budget: null,
           Text:
             'Humana Inc. is a for-profit American health insurance company based in Louisville, Kentucky. As of 2020 Humana had over 20 million members in the U.S., reported a 2019 revenue of US$56.9 billion, and had 46,000 employees.',
         },
@@ -1404,6 +1426,8 @@ export default {
           Name: '8. Harris Corp.',
           Ticker: 'LHX',
           Stock: null,
+          SpendSearch: 'Harris Corporation',
+          Budget: null,
           Text:
             'Harris Corporation was an American technology company, defense contractor, and information technology services provider that produced wireless equipment, tactical radios, electronic systems, night vision equipment and both terrestrial and spaceborne antennas for use in the government, defense and commercial sectors.',
         },
@@ -1411,6 +1435,8 @@ export default {
           Name: '9. BAE Systems Plc',
           Ticker: 'BAESY',
           Stock: null,
+          SpendSearch: 'BAE Systems',
+          Budget: null,
           Text:
             'BAE Systems plc is a British multinational arms, security, and aerospace company. Its headquarters are in London and Farnborough in the United Kingdom with operations worldwide.',
         },
@@ -1420,9 +1446,103 @@ export default {
   async fetch() {
     let i = 0
     while (i < 9) {
+      const searchBody = {
+        group: 'quarter',
+        filters: {
+          time_period: [
+            {
+              start_date: '2012-10-01',
+              end_date: '2013-09-30',
+            },
+            {
+              start_date: '2013-10-01',
+              end_date: '2014-09-30',
+            },
+            {
+              start_date: '2014-10-01',
+              end_date: '2015-09-30',
+            },
+            {
+              start_date: '2015-10-01',
+              end_date: '2016-09-30',
+            },
+            {
+              start_date: '2016-10-01',
+              end_date: '2017-09-30',
+            },
+            {
+              start_date: '2017-10-01',
+              end_date: '2018-09-30',
+            },
+            {
+              start_date: '2018-10-01',
+              end_date: '2019-09-30',
+            },
+            {
+              start_date: '2019-10-01',
+              end_date: '2020-09-30',
+            },
+            {
+              start_date: '2020-10-01',
+              end_date: '2021-09-30',
+            },
+            {
+              start_date: '2011-10-01',
+              end_date: '2012-09-30',
+            },
+          ],
+          award_type_codes: ['A', 'B', 'C', 'D'],
+          agencies: [
+            {
+              type: 'awarding',
+              tier: 'toptier',
+              name: 'Department of Defense',
+            },
+          ],
+          recipient_search_text: [this.contractors[i].SpendSearch],
+        },
+        subawards: false,
+        auditTrail: 'Spending Over Time Visualization',
+      }
       if (i === 3) {
+        this.contractors[i].Budget = await fetch(
+          'https://api.usaspending.gov/api/v2/search/spending_over_time/',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(searchBody),
+          }
+        )
+          .then((response) => {
+            const stuff = response.json()
+            console.log(stuff)
+            return stuff
+          })
+          .catch((err) => {
+            console.error(err)
+          })
         i++
       } else {
+        this.contractors[i].Budget = await fetch(
+          'https://api.usaspending.gov/api/v2/search/spending_over_time/',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(searchBody),
+          }
+        )
+          .then((response) => {
+            const stuff = response.json()
+            console.log(stuff)
+            return stuff
+          })
+          .catch((err) => {
+            console.error(err)
+          })
         this.contractors[i].Stock = await fetch(
           'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/get-histories?symbol=' +
             this.contractors[i].Ticker +
@@ -1510,6 +1630,36 @@ export default {
         })
       }
       this.lineData[i].datasets.push(data)
+      const data2 = {
+        data: null,
+        label: 'Allocated Obligations',
+        type: 'bar',
+        yAxisID: 'C',
+      }
+      const dateMoney = []
+      v.Budget.results.forEach(function (k) {
+        let dateDate = k.time_period.fiscal_year
+        switch (k.time_period.quarter) {
+          case '1':
+            dateDate = dateDate + '-02'
+            break
+          case '2':
+            dateDate = dateDate + '-05'
+            break
+          case '3':
+            dateDate = dateDate + '-08'
+            break
+          case '4':
+            dateDate = dateDate + '-11'
+            break
+        }
+        dateMoney.push({
+          x: dateDate,
+          y: k.aggregated_amount,
+        })
+      })
+      data2.data = _.dropRight(dateMoney, 3)
+      this.lineData[i].datasets.push(data2)
     })
     this.showLine = true
     // showLine will only be set to true on the client. This keeps the DOM-tree in sync.

@@ -1,7 +1,8 @@
+/* eslint-disable vue/require-prop-types */
 import Vue from 'vue'
 import { Line } from 'vue-chartjs'
 
-Vue.component('my-line', {
+Vue.component('MyLine', {
   extends: Line,
   props: ['options', 'mydata'],
   mounted() {
