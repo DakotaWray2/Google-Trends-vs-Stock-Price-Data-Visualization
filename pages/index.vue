@@ -38,36 +38,53 @@
                       <p>{{ contractor.Name }}</p>
                     </dd>
                   </dl>
-                  <div class="space-y-5 xl:col-span-3">
-                    <div
-                      style="font-family: 'Droid Serif', Serif; font-size: 13px"
-                      class="space-y-6"
-                    >
-                      {{ contractor.Text }}
-                      <br />
-                      <br />
-                      There is a
-                      <span style="color: green">positive </span>
-                      correlation between search trends and
-                      {{ contractor.Ticker }}'s stock price.
-                      <br />
-                      There is a
-                      <span style="color: red">negative </span>
-                      correlation between congressional funding and
-                      {{ contractor.Ticker }}'s stock price.
+                  <div
+                    class="space-y-5 xl:col-span-3"
+                    style="font-family: 'Droid Serif', Serif; font-size: 15px"
+                  >
+                    {{ contractor.Text }}
+                    <br />
+                    <div class="grid grid-cols-2 gap-12">
+                      <div>
+                        <client-only>
+                          <div>
+                            <my-scatter
+                              v-if="showLine"
+                              :height="180"
+                            ></my-scatter>
+                          </div>
+                        </client-only>
+                        <p>
+                          There is a
+                          <span style="color: green">positive </span>
+                          correlation between search trends and
+                          {{ contractor.Ticker }}'s stock price.
+                        </p>
+                      </div>
+                      <div>
+                        <client-only>
+                          <my-scatter
+                            v-if="showLine"
+                            :height="180"
+                          ></my-scatter>
+                        </client-only>
+                        <p>
+                          There is a
+                          <span style="color: red">negative </span>
+                          correlation between congressional funding and
+                          {{ contractor.Ticker }}'s stock price.
+                        </p>
+                      </div>
                     </div>
-                    <div class="">
-                      <client-only>
-                        <my-line
-                          v-if="showLine"
-                          :width="70"
-                          :height="35"
-                          :options="options"
-                          :mydata="lineData[index]"
-                        >
-                        </my-line>
-                      </client-only>
-                    </div>
+                    <client-only>
+                      <my-line
+                        v-if="showLine"
+                        :width="70"
+                        :height="35"
+                        :mydata="lineData[index]"
+                      >
+                      </my-line>
+                    </client-only>
                   </div>
                 </div>
               </article>
@@ -82,46 +99,6 @@
 <script>
 import _ from 'lodash'
 export default {
-  asyncData() {
-    const options = {
-      title: {
-        display: false,
-      },
-      scales: {
-        xAxes: [
-          {
-            type: 'time',
-            distribution: 'linear',
-            time: {
-              unit: 'year',
-              // unitStepSize: 10,
-            },
-          },
-        ],
-        yAxes: [
-          { id: 'A', position: 'left' },
-          {
-            id: 'B',
-            position: 'right',
-            ticks: {
-              display: false,
-            },
-            gridLines: {
-              display: false,
-            },
-          },
-          {
-            id: 'C',
-            position: 'right',
-            gridLines: {
-              display: false,
-            },
-          },
-        ],
-      },
-    } // some options
-    return { options }
-  },
   data() {
     return {
       lineData: [
@@ -1536,8 +1513,8 @@ export default {
           }
         )
           .then((response) => {
+            console.log(response)
             const stuff = response.json()
-            console.log(stuff)
             return stuff
           })
           .catch((err) => {
@@ -1551,7 +1528,7 @@ export default {
             method: 'GET',
             headers: {
               'x-rapidapi-key':
-                '90761472f0mshb12e7b845787b9fp1e7225jsn432b697b35a4',
+                '20f82c97b2msha5d3c8d48c9e262p1ef2b7jsncad42a5911cc',
               'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com',
             },
           }
@@ -1673,4 +1650,8 @@ export default {
 @apply min-h-screen flex justify-center items-center text-center mx-auto;
 }
 */
+p {
+  font-family: 'Droid Serif', Serif;
+  font-size: 12px;
+}
 </style>
