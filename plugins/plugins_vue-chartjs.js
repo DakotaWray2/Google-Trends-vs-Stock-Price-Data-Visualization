@@ -8,6 +8,9 @@ Vue.component('MyLine', {
   data() {
     return {
       Options: {
+        tooltips: {
+          enabled: false,
+        },
         title: {
           display: false,
         },
@@ -19,6 +22,9 @@ Vue.component('MyLine', {
               time: {
                 unit: 'year',
                 // unitStepSize: 10,
+              },
+              gridLines: {
+                drawOnChartArea: false,
               },
             },
           ],

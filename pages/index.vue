@@ -51,6 +51,7 @@
                             <my-scatter
                               v-if="showLine"
                               :height="180"
+                              :mydata="scatterData1[index]"
                             ></my-scatter>
                           </div>
                         </client-only>
@@ -66,6 +67,7 @@
                           <my-scatter
                             v-if="showLine"
                             :height="180"
+                            :mydata="scatterData2[index]"
                           ></my-scatter>
                         </client-only>
                         <p>
@@ -101,6 +103,136 @@ import _ from 'lodash'
 export default {
   data() {
     return {
+      scatterData1: [
+        {
+          datasets: [
+            {
+              data: [],
+            },
+          ],
+        },
+        {
+          datasets: [
+            {
+              data: [],
+            },
+          ],
+        },
+        {
+          datasets: [
+            {
+              data: [],
+            },
+          ],
+        },
+        {
+          datasets: [
+            {
+              data: [],
+            },
+          ],
+        },
+        {
+          datasets: [
+            {
+              data: [],
+            },
+          ],
+        },
+        {
+          datasets: [
+            {
+              data: [],
+            },
+          ],
+        },
+        {
+          datasets: [
+            {
+              data: [],
+            },
+          ],
+        },
+        {
+          datasets: [
+            {
+              data: [],
+            },
+          ],
+        },
+        {
+          datasets: [
+            {
+              data: [],
+            },
+          ],
+        },
+      ],
+      scatterData2: [
+        {
+          datasets: [
+            {
+              data: [],
+            },
+          ],
+        },
+        {
+          datasets: [
+            {
+              data: [],
+            },
+          ],
+        },
+        {
+          datasets: [
+            {
+              data: [],
+            },
+          ],
+        },
+        {
+          datasets: [
+            {
+              data: [],
+            },
+          ],
+        },
+        {
+          datasets: [
+            {
+              data: [],
+            },
+          ],
+        },
+        {
+          datasets: [
+            {
+              data: [],
+            },
+          ],
+        },
+        {
+          datasets: [
+            {
+              data: [],
+            },
+          ],
+        },
+        {
+          datasets: [
+            {
+              data: [],
+            },
+          ],
+        },
+        {
+          datasets: [
+            {
+              data: [],
+            },
+          ],
+        },
+      ],
       lineData: [
         {
           // labels: [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
@@ -708,129 +840,6 @@ export default {
                 { x: '2020-12', y: 7 },
                 { x: '2021-01', y: 17 },
                 { x: '2021-02', y: 40 },
-              ],
-              label: 'Google Search Trend',
-              borderColor: '#3e95cd',
-              fill: false,
-              pointRadius: 0,
-              yAxisID: 'B',
-            },
-          ],
-        },
-        {
-          // labels: [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
-          datasets: [
-            {
-              data: [
-                { x: '2012-02', y: 42 },
-                { x: '2012-03', y: 35 },
-                { x: '2012-04', y: 35 },
-                { x: '2012-05', y: 39 },
-                { x: '2012-06', y: 46 },
-                { x: '2012-07', y: 45 },
-                { x: '2012-08', y: 36 },
-                { x: '2012-09', y: 30 },
-                { x: '2012-10', y: 40 },
-                { x: '2012-11', y: 31 },
-                { x: '2012-12', y: 25 },
-                { x: '2013-01', y: 24 },
-                { x: '2013-02', y: 31 },
-                { x: '2013-03', y: 36 },
-                { x: '2013-04', y: 32 },
-                { x: '2013-05', y: 33 },
-                { x: '2013-06', y: 28 },
-                { x: '2013-07', y: 28 },
-                { x: '2013-08', y: 27 },
-                { x: '2013-09', y: 36 },
-                { x: '2013-10', y: 30 },
-                { x: '2013-11', y: 37 },
-                { x: '2013-12', y: 33 },
-                { x: '2014-01', y: 29 },
-                { x: '2014-02', y: 34 },
-                { x: '2014-03', y: 39 },
-                { x: '2014-04', y: 39 },
-                { x: '2014-05', y: 32 },
-                { x: '2014-06', y: 31 },
-                { x: '2014-07', y: 34 },
-                { x: '2014-08', y: 30 },
-                { x: '2014-09', y: 32 },
-                { x: '2014-10', y: 35 },
-                { x: '2014-11', y: 32 },
-                { x: '2014-12', y: 33 },
-                { x: '2015-01', y: 33 },
-                { x: '2015-02', y: 33 },
-                { x: '2015-03', y: 37 },
-                { x: '2015-04', y: 40 },
-                { x: '2015-05', y: 31 },
-                { x: '2015-06', y: 35 },
-                { x: '2015-07', y: 46 },
-                { x: '2015-08', y: 39 },
-                { x: '2015-09', y: 35 },
-                { x: '2015-10', y: 36 },
-                { x: '2015-11', y: 26 },
-                { x: '2015-12', y: 23 },
-                { x: '2016-01', y: 24 },
-                { x: '2016-02', y: 53 },
-                { x: '2016-03', y: 40 },
-                { x: '2016-04', y: 26 },
-                { x: '2016-05', y: 24 },
-                { x: '2016-06', y: 28 },
-                { x: '2016-07', y: 28 },
-                { x: '2016-08', y: 27 },
-                { x: '2016-09', y: 28 },
-                { x: '2016-10', y: 29 },
-                { x: '2016-11', y: 35 },
-                { x: '2016-12', y: 52 },
-                { x: '2017-01', y: 32 },
-                { x: '2017-02', y: 30 },
-                { x: '2017-03', y: 37 },
-                { x: '2017-04', y: 32 },
-                { x: '2017-05', y: 33 },
-                { x: '2017-06', y: 27 },
-                { x: '2017-07', y: 28 },
-                { x: '2017-08', y: 49 },
-                { x: '2017-09', y: 54 },
-                { x: '2017-10', y: 36 },
-                { x: '2017-11', y: 31 },
-                { x: '2017-12', y: 26 },
-                { x: '2018-01', y: 37 },
-                { x: '2018-02', y: 37 },
-                { x: '2018-03', y: 37 },
-                { x: '2018-04', y: 43 },
-                { x: '2018-05', y: 36 },
-                { x: '2018-06', y: 37 },
-                { x: '2018-07', y: 34 },
-                { x: '2018-08', y: 34 },
-                { x: '2018-09', y: 38 },
-                { x: '2018-10', y: 43 },
-                { x: '2018-11', y: 47 },
-                { x: '2018-12', y: 33 },
-                { x: '2019-01', y: 32 },
-                { x: '2019-02', y: 39 },
-                { x: '2019-03', y: 34 },
-                { x: '2019-04', y: 35 },
-                { x: '2019-05', y: 27 },
-                { x: '2019-06', y: 100 },
-                { x: '2019-07', y: 34 },
-                { x: '2019-08', y: 30 },
-                { x: '2019-09', y: 33 },
-                { x: '2019-10', y: 42 },
-                { x: '2019-11', y: 31 },
-                { x: '2019-12', y: 25 },
-                { x: '2020-01', y: 35 },
-                { x: '2020-02', y: 39 },
-                { x: '2020-03', y: 51 },
-                { x: '2020-04', y: 55 },
-                { x: '2020-05', y: 31 },
-                { x: '2020-06', y: 21 },
-                { x: '2020-07', y: 20 },
-                { x: '2020-08', y: 18 },
-                { x: '2020-09', y: 20 },
-                { x: '2020-10', y: 22 },
-                { x: '2020-11', y: 15 },
-                { x: '2020-12', y: 17 },
-                { x: '2021-01', y: 15 },
-                { x: '2021-02', y: 16 },
               ],
               label: 'Google Search Trend',
               borderColor: '#3e95cd',
@@ -1528,7 +1537,7 @@ export default {
             method: 'GET',
             headers: {
               'x-rapidapi-key':
-                '20f82c97b2msha5d3c8d48c9e262p1ef2b7jsncad42a5911cc',
+                '8864fab2cemsh8442acfc776419fp158c45jsn9e380892f420',
               'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com',
             },
           }
@@ -1548,6 +1557,8 @@ export default {
   fetchOnServer: true,
   mounted() {
     console.log(this.contractors[3].Stock)
+    // eslint-disable-next-line no-unused-vars
+    const vm = this
     this.contractors.forEach((v, i) => {
       console.log(v)
       const data = {
@@ -1637,9 +1648,50 @@ export default {
       })
       data2.data = _.dropRight(dateMoney, 3)
       this.lineData[i].datasets.push(data2)
+      console.log(this.lineData)
+    })
+    this.lineData.forEach(function (b, i) {
+      const interpolatedTrend = vm.interpolateArray(
+        b.datasets[0].data.map((a) => a.y),
+        37
+      )
+
+      b.datasets[1].data.forEach(function (z, c) {
+        vm.scatterData1[i].datasets[0].data.push({
+          x: interpolatedTrend[c],
+          y: z.y,
+        })
+        vm.scatterData2[i].datasets[0].data.push({
+          x: z.y,
+          y: b.datasets[2].data[c].y,
+        })
+      })
     })
     this.showLine = true
     // showLine will only be set to true on the client. This keeps the DOM-tree in sync.
+  },
+  methods: {
+    interpolateArray(data, fitCount) {
+      const linearInterpolate = function (before, after, atPoint) {
+        return before + (after - before) * atPoint
+      }
+      // eslint-disable-next-line no-array-constructor
+      const newData = new Array()
+      // eslint-disable-next-line no-new-wrappers
+      const springFactor = new Number((data.length - 1) / (fitCount - 1))
+      newData[0] = data[0] // for new allocation
+      for (let i = 1; i < fitCount - 1; i++) {
+        const tmp = i * springFactor
+        // eslint-disable-next-line no-new-wrappers
+        const before = new Number(Math.floor(tmp)).toFixed()
+        // eslint-disable-next-line no-new-wrappers
+        const after = new Number(Math.ceil(tmp)).toFixed()
+        const atPoint = tmp - before
+        newData[i] = linearInterpolate(data[before], data[after], atPoint)
+      }
+      newData[fitCount - 1] = data[data.length - 1] // for new allocation
+      return newData
+    },
   },
 }
 </script>
