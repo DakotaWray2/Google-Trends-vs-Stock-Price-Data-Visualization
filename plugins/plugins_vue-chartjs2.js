@@ -19,6 +19,7 @@ Vue.component('MyScatter', {
         scales: {
           yAxes: [
             {
+              id: 'Y',
               ticks: {
                 display: false,
               },
@@ -32,6 +33,7 @@ Vue.component('MyScatter', {
           ],
           xAxes: [
             {
+              id: 'X',
               ticks: {
                 display: false,
               },

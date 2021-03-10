@@ -1,24 +1,42 @@
-/* eslint-disable no-console */
+/* eslint-disable camelcase */ /* eslint-disable no-console */
 <template>
   <div class="max-w-3xl px-4 mx-auto sm:px-6 xl:max-w-5xl xl:px-0">
     <div class="flex flex-col justify-between h-screen">
       <main class="mb-auto">
         <div class="divide-y divide-gray-200 dark:divide-gray-700">
           <div class="pt-6 pb-8 space-y-2 md:space-y-5">
-            <h1
-              style="font-family: 'Roboto', Sans-Serif; font-size: 35px"
-              class=""
-            >
-              IWS 12.0 Digital Olympics Data Visualization Submission
-            </h1>
-            <p style="font-family: 'Droid Serif', Serif; font-size: 15px">
-              Visualizing the relationships between federal budget allocation,
-              stock price and google search trends for America's top defense
-              contractors
+            <h1>Digital Olympics - Data Visualization</h1>
+            <p>
+              Visualizing the relationships between federal budget, stock price
+              and Google search trends for America's top defense contractors.
+              Trends calculated using the
+              <a
+                href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient"
+                target="_blank"
+                >Pearson correlation coefficient</a
+              >.
             </p>
 
-            <p style="font-family: 'Droid Serif', Serif; font-size: 15px">
-              Dakota Wray
+            <p
+              style="
+                font-family: 'Libre Barcode 39 Text', Serif;
+                font-size: 15px;
+              "
+            >
+              Dakota Wray - IWS 12
+            </p>
+            <p>
+              Built with <a href="https://vuejs.org/" target="_blank">VueJS</a>,
+              <a href="https://www.netlify.com/" target="_blank">Netlify</a>,
+              <a href="https://lodash.com/" target="_blank">Lodash</a>,
+              <a href="https://nuxtjs.org/" target="_blank">Nuxt</a> and
+              <a href="https://vue-chartjs.org/" target="_blank">vue-chartjs</a
+              >. View my code
+              <a
+                href="https://github.com/DakotaWray2/Digital_Olympics"
+                target="_blank"
+                >here</a
+              >.
             </p>
           </div>
           <ul class="divide-y divide-gray-200 dark:divide-gray-700">
@@ -32,16 +50,11 @@
                   class="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline"
                 >
                   <dl>
-                    <dd
-                      style="font-family: 'Droid Serif', Serif; font-size: 15px"
-                    >
-                      <p>{{ contractor.Name }}</p>
+                    <dd>
+                      <h1 class="subhead">{{ contractor.Name }}</h1>
                     </dd>
                   </dl>
-                  <div
-                    class="space-y-5 xl:col-span-3"
-                    style="font-family: 'Droid Serif', Serif; font-size: 15px"
-                  >
+                  <div class="space-y-5 xl:col-span-3">
                     {{ contractor.Text }}
                     <br />
                     <div class="grid grid-cols-2 gap-12">
@@ -57,9 +70,17 @@
                         </client-only>
                         <p>
                           There is a
-                          <span style="color: green">positive </span>
+                          <span
+                            :style="[
+                              contractor.Trend1 === 'positive'
+                                ? { color: 'green' }
+                                : { color: 'red' },
+                            ]"
+                            >{{ contractor.Trend1 }}
+                          </span>
                           correlation between search trends and
-                          {{ contractor.Ticker }}'s stock price.
+                          {{ contractor.Ticker }}'s stock price. (r =
+                          {{ contractor.Pearson1 }})
                         </p>
                       </div>
                       <div>
@@ -72,9 +93,17 @@
                         </client-only>
                         <p>
                           There is a
-                          <span style="color: red">negative </span>
+                          <span
+                            :style="[
+                              contractor.Trend2 === 'positive'
+                                ? { color: 'green' }
+                                : { color: 'red' },
+                            ]"
+                            >{{ contractor.Trend2 }}
+                          </span>
                           correlation between congressional funding and
-                          {{ contractor.Ticker }}'s stock price.
+                          {{ contractor.Ticker }}'s stock price. (r =
+                          {{ contractor.Pearson2 }})
                         </p>
                       </div>
                     </div>
@@ -1346,83 +1375,119 @@ export default {
       showLine: false,
       contractors: [
         {
-          Name: '1. Lockheed Martin Corp.',
+          Name: 'Lockheed Martin Corp.',
           Ticker: 'LMT',
           SpendSearch: 'Lockheed Martin',
           Stock: null,
           Budget: null,
+          Trend1: null,
+          Pearson1: null,
+          Trend2: null,
+          Pearson2: null,
           Text:
             'Lockheed Martin Corporation is an American aerospace, arms, defense, security, and advanced technologies company with worldwide interests. It was formed by the merger of Lockheed Corporation with Martin Marietta in March 1995. It is headquartered in North Bethesda, Maryland, in the Washington, D.C., area.',
         },
         {
-          Name: '2. Boeing Co.',
+          Name: 'Boeing Co.',
           Ticker: 'BA',
           SpendSearch: 'Boeing',
           Stock: null,
           Budget: null,
+          Trend1: null,
+          Pearson1: null,
+          Trend2: null,
+          Pearson2: null,
           Text:
             'The Boeing Company is an American multinational corporation that designs, manufactures, and sells airplanes, rotorcraft, rockets, satellites, telecommunications equipment, and missiles worldwide. The company also provides leasing and product support services.',
         },
         {
-          Name: '3. General Dynamics Corp.',
+          Name: 'General Dynamics Corp.',
           Ticker: 'GD',
           Stock: null,
           SpendSearch: 'General Dynamics',
           Budget: null,
+          Trend1: null,
+          Pearson1: null,
+          Trend2: null,
+          Pearson2: null,
           Text:
             'General Dynamics Corporation is an American aerospace and defense corporation. As of 2019, it was the fifth-largest defense contractor in the United States, and the sixth-largest in the world, by sales. The company ranked No. 92 in the 2019 Fortune 500 list of the largest United States corporations by total revenue.',
         },
         {
-          Name: '4. Raytheon Technologies Corp.',
+          Name: 'Raytheon Technologies Corp.',
           Ticker: 'RTX',
           Stock: null,
           SpendSearch: 'Raytheon',
           Budget: null,
+          Trend1: null,
+          Pearson1: null,
+          Trend2: null,
+          Pearson2: null,
           Text:
             'Raytheon Technologies Corporation is an American multinational conglomerate headquartered in Waltham, Massachusetts. The company is one of the largest aerospace, intelligence services providers, and defense manufacturers in the world by revenue and market capitalization.',
         },
         {
-          Name: '5. Northrup Grumman Corp.',
+          Name: 'Northrup Grumman Corp.',
           Ticker: 'NOC',
           Stock: null,
           SpendSearch: 'Northrop Grumman Corporation',
           Budget: null,
+          Trend1: null,
+          Pearson1: null,
+          Trend2: null,
+          Pearson2: null,
           Text:
             "Northrop Grumman Corporation is an American global aerospace and defense technology company. With 90,000 employees and an annual revenue in excess of $30 billion, it is one of the world's largest weapons manufacturers and military technology providers.",
         },
         {
-          Name: '6. Huntington Ingalls Industries Inc.',
+          Name: 'Huntington Ingalls Industries Inc.',
           Ticker: 'HII',
           Stock: null,
           SpendSearch: 'Huntington Ingalls',
           Budget: null,
+          Trend1: null,
+          Pearson1: null,
+          Trend2: null,
+          Pearson2: null,
           Text:
             'Huntington Ingalls Industries is America’s largest military shipbuilding company and a provider of professional services to partners in government and industry. HII, ranked No. 371 on the Fortune 500, was formed on March 31, 2011, as a spin-off of Northrop Grumman.',
         },
         {
-          Name: '7. Humana Inc.',
+          Name: 'Humana Inc.',
           Ticker: 'HUM',
           Stock: null,
           SpendSearch: 'Humana',
           Budget: null,
+          Trend1: null,
+          Pearson1: null,
+          Trend2: null,
+          Pearson2: null,
           Text:
             'Humana Inc. is a for-profit American health insurance company based in Louisville, Kentucky. As of 2020 Humana had over 20 million members in the U.S., reported a 2019 revenue of US$56.9 billion, and had 46,000 employees.',
         },
         {
-          Name: '8. Harris Corp.',
+          Name: 'Harris Corp.',
           Ticker: 'LHX',
           Stock: null,
           SpendSearch: 'Harris Corporation',
           Budget: null,
+          Trend1: null,
+          Pearson1: null,
+          Trend2: null,
+          Pearson2: null,
           Text:
             'Harris Corporation was an American technology company, defense contractor, and information technology services provider that produced wireless equipment, tactical radios, electronic systems, night vision equipment and both terrestrial and spaceborne antennas for use in the government, defense and commercial sectors.',
         },
         {
-          Name: '9. BAE Systems Plc',
+          Name: 'BAE Systems Plc',
           Ticker: 'BAESY',
           Stock: null,
           SpendSearch: 'BAE Systems',
           Budget: null,
+          Trend1: null,
+          Pearson1: null,
+          Trend2: null,
+          Pearson2: null,
           Text:
             'BAE Systems plc is a British multinational arms, security, and aerospace company. Its headquarters are in London and Farnborough in the United Kingdom with operations worldwide.',
         },
@@ -1648,6 +1713,7 @@ export default {
       })
       data2.data = _.dropRight(dateMoney, 3)
       this.lineData[i].datasets.push(data2)
+      // eslint-disable-next-line no-console
       console.log(this.lineData)
     })
     this.lineData.forEach(function (b, i) {
@@ -1666,11 +1732,173 @@ export default {
           y: b.datasets[2].data[c].y,
         })
       })
+      //  console.log(
+      //    vm.scatterData1[i].datasets[0].data.map((a) => parseFloat(a.x))
+      //  )
+      //  console.log(
+      //    vm.scatterData1[i].datasets[0].data.map((a) => parseFloat(a.y))
+      //  )
+      //  console.log(
+      //    vm.scatterData2[i].datasets[0].data.map((a) => parseFloat(a.x))
+      //  )
+      //  console.log(
+      //    vm.scatterData2[i].datasets[0].data.map((a) => parseFloat(a.y))
+      //  )
+      const correlationCoefficient1 = vm.getPearsonCorrelation(
+        vm.scatterData1[i].datasets[0].data.map((a) => parseFloat(a.x)),
+        vm.scatterData1[i].datasets[0].data.map((a) => parseFloat(a.y))
+      )
+      // eslint-disable-next-line no-console
+      console.log(correlationCoefficient1)
+      vm.contractors[i].Pearson1 = parseFloat(correlationCoefficient1).toFixed(
+        2
+      )
+      vm.contractors[i].Trend1 =
+        Math.sign(correlationCoefficient1) === -1 ? 'negative' : 'positive'
+      const correlationCoefficient2 = vm.getPearsonCorrelation(
+        vm.scatterData2[i].datasets[0].data.map((a) => parseFloat(a.x)),
+        vm.scatterData2[i].datasets[0].data.map((a) => parseFloat(a.y))
+      )
+      // eslint-disable-next-line no-console
+      console.log(correlationCoefficient2)
+      vm.contractors[i].Pearson2 = parseFloat(correlationCoefficient2).toFixed(
+        2
+      )
+      vm.contractors[i].Trend2 =
+        Math.sign(correlationCoefficient2) === -1 ? 'negative' : 'positive'
+      const bestLine1 = vm.findLineByLeastSquares(
+        vm.scatterData1[i].datasets[0].data.map((a) => parseFloat(a.x)),
+        vm.scatterData1[i].datasets[0].data.map((a) => parseFloat(a.y))
+      )
+      // eslint-disable-next-line no-console
+      console.log(bestLine1)
+      const bestLine1data = []
+      bestLine1[0].forEach(function (c, i) {
+        bestLine1data.push({ x: c, y: bestLine1[1][i] })
+      })
+      vm.scatterData1[i].datasets.push({
+        data: bestLine1data,
+        type: 'line',
+        pointRadius: 0,
+        fill: false,
+        borderColor: '#da0606',
+      })
+      const bestLine2 = vm.findLineByLeastSquares(
+        vm.scatterData2[i].datasets[0].data.map((a) => parseFloat(a.x)),
+        vm.scatterData2[i].datasets[0].data.map((a) => parseFloat(a.y))
+      )
+      // eslint-disable-next-line no-console
+      console.log(bestLine2)
+      const bestLine2data = []
+      bestLine2[0].forEach(function (c, i) {
+        bestLine2data.push({ x: c, y: bestLine2[1][i] })
+      })
+      vm.scatterData2[i].datasets.push({
+        data: bestLine2data,
+        type: 'line',
+        pointRadius: 0,
+        fill: false,
+        borderColor: '#da0606',
+      })
     })
     this.showLine = true
     // showLine will only be set to true on the client. This keeps the DOM-tree in sync.
   },
   methods: {
+    findLineByLeastSquares(valuesX, valuesY) {
+      let sumX = 0
+      let sumY = 0
+      let sumXy = 0
+      let sumXx = 0
+      let count = 0
+      let x = 0
+      let y = 0
+      const valuesLength = valuesX.length
+      if (valuesLength !== valuesY.length) {
+        throw new Error(
+          'The parameters valuesX and valuesY need to have same size!'
+        )
+      }
+      if (valuesLength === 0) {
+        return [[], []]
+      }
+      for (let v = 0; v < valuesLength; v++) {
+        x = valuesX[v]
+        y = valuesY[v]
+        sumX += x
+        sumY += y
+        sumXx += x * x
+        sumXy += x * y
+        count++
+      }
+      const m = (count * sumXy - sumX * sumY) / (count * sumXx - sumX * sumX)
+      const b = sumY / count - (m * sumX) / count
+      const resultX = []
+      const resultY = []
+      for (let v = 0; v < valuesLength; v++) {
+        x = valuesX[v]
+        y = x * m + b
+        resultX.push(x)
+        resultY.push(y)
+      }
+
+      return [resultX, resultY]
+    },
+    getPearsonCorrelation(x, y) {
+      let shortestArrayLength = 0
+
+      if (x.length === y.length) {
+        shortestArrayLength = x.length
+      } else if (x.length > y.length) {
+        shortestArrayLength = y.length
+        // eslint-disable-next-line no-console
+        console.error(
+          'x has more items in it, the last ' +
+            (x.length - shortestArrayLength) +
+            ' item(s) will be ignored'
+        )
+      } else {
+        shortestArrayLength = x.length
+        // eslint-disable-next-line no-console
+        console.error(
+          'y has more items in it, the last ' +
+            (y.length - shortestArrayLength) +
+            ' item(s) will be ignored'
+        )
+      }
+
+      const xy = []
+      const x2 = []
+      const y2 = []
+
+      for (let i = 0; i < shortestArrayLength; i++) {
+        xy.push(x[i] * y[i])
+        x2.push(x[i] * x[i])
+        y2.push(y[i] * y[i])
+      }
+
+      let sumX = 0
+      let sumY = 0
+      let sumXy = 0
+      let sumX2 = 0
+      let sumY2 = 0
+
+      for (let i = 0; i < shortestArrayLength; i++) {
+        sumX += x[i]
+        sumY += y[i]
+        sumXy += xy[i]
+        sumX2 += x2[i]
+        sumY2 += y2[i]
+      }
+
+      const step1 = shortestArrayLength * sumXy - sumX * sumY
+      const step2 = shortestArrayLength * sumX2 - sumX * sumX
+      const step3 = shortestArrayLength * sumY2 - sumY * sumY
+      const step4 = Math.sqrt(step2 * step3)
+      const answer = step1 / step4
+
+      return answer
+    },
     interpolateArray(data, fitCount) {
       const linearInterpolate = function (before, after, atPoint) {
         return before + (after - before) * atPoint
@@ -1693,6 +1921,7 @@ export default {
       return newData
     },
   },
+  // #240090
 }
 </script>
 
@@ -1702,8 +1931,26 @@ export default {
 @apply min-h-screen flex justify-center items-center text-center mx-auto;
 }
 */
-p {
-  font-family: 'Droid Serif', Serif;
-  font-size: 12px;
+body {
+  background: #060019;
+  color: #dedede;
+  font-size: 14px;
+}
+h1 {
+  font-family: 'Libre Barcode 39 Text', Sans-Serif;
+  font-size: 46px;
+  color: #ffd300;
+}
+.subhead {
+  font-family: 'Libre Barcode 39 Text', Sans-Serif;
+  font-size: 38px;
+  color: #fff;
+  padding-right: 18px;
+}
+a {
+  background: #ffd300;
+  color: #000;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 </style>
