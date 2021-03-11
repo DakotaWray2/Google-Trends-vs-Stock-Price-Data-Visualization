@@ -9,7 +9,12 @@ Vue.component('MyLine', {
     return {
       Options: {
         tooltips: {
-          enabled: false,
+          // enabled: false,
+        },
+        legend: {
+          labels: {
+            fontColor: '#dedede',
+          },
         },
         title: {
           display: false,
@@ -17,6 +22,7 @@ Vue.component('MyLine', {
         scales: {
           xAxes: [
             {
+              z: 5,
               type: 'time',
               distribution: 'linear',
               time: {
@@ -25,12 +31,22 @@ Vue.component('MyLine', {
               },
               gridLines: {
                 drawOnChartArea: false,
+                zeroLineColor: 'rgba(255, 213, 0, 0.4)',
+                color: 'rgba(255, 213, 0, 0.4)',
+              },
+              ticks: {
+                fontColor: '#ffd300',
               },
             },
           ],
           yAxes: [
             {
+              gridLines: {
+                color: 'rgba(255, 213, 0, 0.4)',
+              },
               ticks: {
+                padding: 15,
+                fontColor: '#ffd300',
                 // eslint-disable-next-line object-shorthand
                 callback: function (value, index, values) {
                   return '$' + value
@@ -47,14 +63,16 @@ Vue.component('MyLine', {
               },
               gridLines: {
                 display: false,
+                color: '#ffd300',
               },
             },
             {
               id: 'C',
               ticks: {
+                fontColor: '#ffd300',
                 // eslint-disable-next-line object-shorthand
                 callback: function (value, index, values) {
-                  return '$' + value / 1e7 + 'B'
+                  return '$' + value / 1e8 + 'B'
                 },
               },
               position: 'right',

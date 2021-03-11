@@ -8,7 +8,12 @@
             <h1>Digital Olympics - Data Visualization</h1>
             <p>
               Visualizing the relationships between federal budget, stock price
-              and Google search trends for America's top defense contractors.
+              and Google search trends for America's
+              <a
+                href="https://about.bgov.com/top-defense-contractors/"
+                target="_blank"
+                >top defense contractors</a
+              >
               Trends calculated using the
               <a
                 href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient"
@@ -26,6 +31,26 @@
               Dakota Wray - IWS 12
             </p>
             <p>
+              Data from
+              <a href="https://www.usaspending.gov/" target="_blank"
+                >USASpending.gov</a
+              >
+              Public API,
+              <a
+                href="https://rapidapi.com/apidojo/api/yahoo-finance1"
+                target="_blank"
+                >Yahoo Finance</a
+              >
+              API and
+              <a
+                href="https://trends.google.com/trends/?geo=US"
+                target="_blank"
+              >
+                Google search trends</a
+              >
+              data.
+            </p>
+            <p>
               Built with <a href="https://vuejs.org/" target="_blank">VueJS</a>,
               <a href="https://www.netlify.com/" target="_blank">Netlify</a>,
               <a href="https://lodash.com/" target="_blank">Lodash</a>,
@@ -39,11 +64,15 @@
               >.
             </p>
           </div>
-          <ul class="divide-y divide-gray-200 dark:divide-gray-700">
+          <ul
+            style="border-color: #ffd300"
+            class="divide-y divide-gray-200 dark:divide-gray-700"
+          >
             <li
               v-for="(contractor, index) in contractors"
               :key="index"
               class="py-12"
+              style="border-color: #ffd300 !important"
             >
               <article>
                 <div
@@ -69,12 +98,11 @@
                           </div>
                         </client-only>
                         <p>
-                          There is a
                           <span
                             :style="[
-                              contractor.Trend1 === 'positive'
-                                ? { color: 'green' }
-                                : { color: 'red' },
+                              contractor.Trend1 === 'Positive'
+                                ? { color: '#00ff9f' }
+                                : { color: '#ff1900' },
                             ]"
                             >{{ contractor.Trend1 }}
                           </span>
@@ -92,12 +120,11 @@
                           ></my-scatter>
                         </client-only>
                         <p>
-                          There is a
                           <span
                             :style="[
-                              contractor.Trend2 === 'positive'
-                                ? { color: 'green' }
-                                : { color: 'red' },
+                              contractor.Trend2 === 'Positive'
+                                ? { color: '#00ff9f' }
+                                : { color: '#ff1900' },
                             ]"
                             >{{ contractor.Trend2 }}
                           </span>
@@ -137,6 +164,10 @@ export default {
           datasets: [
             {
               data: [],
+              pointBackgroundColor: '#ffd300',
+              pointBorderColor: '#ffb700',
+              pointRadius: 1.5,
+              backgroundColor: '#ffd300',
             },
           ],
         },
@@ -144,6 +175,10 @@ export default {
           datasets: [
             {
               data: [],
+              pointBackgroundColor: '#ffd300',
+              pointBorderColor: '#ffb700',
+              pointRadius: 1.5,
+              backgroundColor: '#ffd300',
             },
           ],
         },
@@ -151,6 +186,10 @@ export default {
           datasets: [
             {
               data: [],
+              pointBackgroundColor: '#ffd300',
+              pointBorderColor: '#ffb700',
+              pointRadius: 1.5,
+              backgroundColor: '#ffd300',
             },
           ],
         },
@@ -158,6 +197,10 @@ export default {
           datasets: [
             {
               data: [],
+              pointBackgroundColor: '#ffd300',
+              pointBorderColor: '#ffb700',
+              pointRadius: 1.5,
+              backgroundColor: '#ffd300',
             },
           ],
         },
@@ -165,6 +208,10 @@ export default {
           datasets: [
             {
               data: [],
+              pointBackgroundColor: '#ffd300',
+              pointBorderColor: '#ffb700',
+              pointRadius: 1.5,
+              backgroundColor: '#ffd300',
             },
           ],
         },
@@ -172,6 +219,10 @@ export default {
           datasets: [
             {
               data: [],
+              pointBackgroundColor: '#ffd300',
+              pointBorderColor: '#ffb700',
+              pointRadius: 1.5,
+              backgroundColor: '#ffd300',
             },
           ],
         },
@@ -179,6 +230,10 @@ export default {
           datasets: [
             {
               data: [],
+              pointBackgroundColor: '#ffd300',
+              pointBorderColor: '#ffb700',
+              pointRadius: 1.5,
+              backgroundColor: '#ffd300',
             },
           ],
         },
@@ -186,6 +241,10 @@ export default {
           datasets: [
             {
               data: [],
+              pointBackgroundColor: '#ffd300',
+              pointBorderColor: '#ffb700',
+              pointRadius: 1.5,
+              backgroundColor: '#ffd300',
             },
           ],
         },
@@ -193,6 +252,10 @@ export default {
           datasets: [
             {
               data: [],
+              pointBackgroundColor: '#ffd300',
+              pointBorderColor: '#ffb700',
+              pointRadius: 1.5,
+              backgroundColor: '#ffd300',
             },
           ],
         },
@@ -202,6 +265,10 @@ export default {
           datasets: [
             {
               data: [],
+              pointBackgroundColor: '#ffd300',
+              pointBorderColor: '#ffb700',
+              pointRadius: 1.5,
+              backgroundColor: '#ffd300',
             },
           ],
         },
@@ -209,6 +276,10 @@ export default {
           datasets: [
             {
               data: [],
+              pointBackgroundColor: '#ffd300',
+              pointBorderColor: '#ffb700',
+              pointRadius: 1.5,
+              backgroundColor: '#ffd300',
             },
           ],
         },
@@ -216,6 +287,10 @@ export default {
           datasets: [
             {
               data: [],
+              pointBackgroundColor: '#ffd300',
+              pointBorderColor: '#ffb700',
+              pointRadius: 1.5,
+              backgroundColor: '#ffd300',
             },
           ],
         },
@@ -223,6 +298,10 @@ export default {
           datasets: [
             {
               data: [],
+              pointBackgroundColor: '#ffd300',
+              pointBorderColor: '#ffb700',
+              pointRadius: 1.5,
+              backgroundColor: '#ffd300',
             },
           ],
         },
@@ -230,6 +309,10 @@ export default {
           datasets: [
             {
               data: [],
+              pointBackgroundColor: '#ffd300',
+              pointBorderColor: '#ffb700',
+              pointRadius: 1.5,
+              backgroundColor: '#ffd300',
             },
           ],
         },
@@ -237,6 +320,10 @@ export default {
           datasets: [
             {
               data: [],
+              pointBackgroundColor: '#ffd300',
+              pointBorderColor: '#ffb700',
+              pointRadius: 1.5,
+              backgroundColor: '#ffd300',
             },
           ],
         },
@@ -244,6 +331,10 @@ export default {
           datasets: [
             {
               data: [],
+              pointBackgroundColor: '#ffd300',
+              pointBorderColor: '#ffb700',
+              pointRadius: 1.5,
+              backgroundColor: '#ffd300',
             },
           ],
         },
@@ -251,6 +342,10 @@ export default {
           datasets: [
             {
               data: [],
+              pointBackgroundColor: '#ffd300',
+              pointBorderColor: '#ffb700',
+              pointRadius: 1.5,
+              backgroundColor: '#ffd300',
             },
           ],
         },
@@ -258,6 +353,10 @@ export default {
           datasets: [
             {
               data: [],
+              pointBackgroundColor: '#ffd300',
+              pointBorderColor: '#ffb700',
+              pointRadius: 1.5,
+              backgroundColor: '#ffd300',
             },
           ],
         },
@@ -379,9 +478,11 @@ export default {
                 { x: '2021-02', y: 60 },
               ],
               label: 'Google Search Trend',
-              borderColor: '#3e95cd',
+              borderColor: '#fff',
               fill: false,
+              borderWidth: 2,
               pointRadius: 0,
+              pointHoverRadius: 0,
               yAxisID: 'B',
             },
           ],
@@ -502,9 +603,11 @@ export default {
                 { x: '2021-02', y: 20 },
               ],
               label: 'Google Search Trend',
-              borderColor: '#3e95cd',
+              borderColor: '#fff',
               fill: false,
               pointRadius: 0,
+              pointHoverRadius: 0,
+              borderWidth: 2,
               yAxisID: 'B',
             },
           ],
@@ -625,9 +728,11 @@ export default {
                 { x: '2021-02', y: 55 },
               ],
               label: 'Google Search Trend',
-              borderColor: '#3e95cd',
+              borderColor: '#fff',
               fill: false,
               pointRadius: 0,
+              pointHoverRadius: 0,
+              borderWidth: 2,
               yAxisID: 'B',
             },
           ],
@@ -748,9 +853,11 @@ export default {
                 { x: '2021-02', y: 60 },
               ],
               label: 'Google Search Trend',
-              borderColor: '#3e95cd',
+              borderColor: '#fff',
               fill: false,
               pointRadius: 0,
+              pointHoverRadius: 0,
+              borderWidth: 2,
               yAxisID: 'B',
             },
           ],
@@ -871,9 +978,11 @@ export default {
                 { x: '2021-02', y: 40 },
               ],
               label: 'Google Search Trend',
-              borderColor: '#3e95cd',
+              borderColor: '#fff',
               fill: false,
               pointRadius: 0,
+              pointHoverRadius: 0,
+              borderWidth: 2,
               yAxisID: 'B',
             },
           ],
@@ -994,9 +1103,11 @@ export default {
                 { x: '2021-02', y: 9 },
               ],
               label: 'Google Search Trend',
-              borderColor: '#3e95cd',
+              borderColor: '#fff',
               fill: false,
               pointRadius: 0,
+              pointHoverRadius: 0,
+              borderWidth: 2,
               yAxisID: 'B',
             },
           ],
@@ -1117,9 +1228,11 @@ export default {
                 { x: '2021-02', y: 76 },
               ],
               label: 'Google Search Trend',
-              borderColor: '#3e95cd',
+              borderColor: '#fff',
+              borderWidth: 2,
               fill: false,
               pointRadius: 0,
+              pointHoverRadius: 0,
               yAxisID: 'B',
             },
           ],
@@ -1240,9 +1353,11 @@ export default {
                 { x: '2021-02', y: 19 },
               ],
               label: 'Google Search Trend',
-              borderColor: '#3e95cd',
+              borderColor: '#fff',
               fill: false,
+              borderWidth: 2,
               pointRadius: 0,
+              pointHoverRadius: 0,
               yAxisID: 'B',
             },
           ],
@@ -1363,9 +1478,11 @@ export default {
                 { x: '2021-02', y: 48 },
               ],
               label: 'Google Search Trend',
-              borderColor: '#3e95cd',
+              borderColor: '#fff',
               fill: false,
               pointRadius: 0,
+              pointHoverRadius: 0,
+              borderWidth: 2,
               yAxisID: 'B',
             },
           ],
@@ -1377,7 +1494,7 @@ export default {
         {
           Name: 'Lockheed Martin Corp.',
           Ticker: 'LMT',
-          SpendSearch: 'Lockheed Martin',
+          SpendSearch: 'LOCKHEED MARTIN CORPORATION',
           Stock: null,
           Budget: null,
           Trend1: null,
@@ -1390,7 +1507,7 @@ export default {
         {
           Name: 'Boeing Co.',
           Ticker: 'BA',
-          SpendSearch: 'Boeing',
+          SpendSearch: 'BOEING COMPANY',
           Stock: null,
           Budget: null,
           Trend1: null,
@@ -1417,7 +1534,7 @@ export default {
           Name: 'Raytheon Technologies Corp.',
           Ticker: 'RTX',
           Stock: null,
-          SpendSearch: 'Raytheon',
+          SpendSearch: 'RAYTHEON TECHNOLOGIES CORPORATION',
           Budget: null,
           Trend1: null,
           Pearson1: null,
@@ -1602,7 +1719,7 @@ export default {
             method: 'GET',
             headers: {
               'x-rapidapi-key':
-                '8864fab2cemsh8442acfc776419fp158c45jsn9e380892f420',
+                '17176c73c3msh3d561b1bcc5d537p1ba3aejsna621c96c8601',
               'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com',
             },
           }
@@ -1667,8 +1784,8 @@ export default {
           { x: '2021-02', y: 73 },
         ],
         label: 'Test',
-        borderColor: '#da0606',
-        backgroundColor: '#da060666',
+        borderColor: '#0045e6',
+        backgroundColor: '#0045e6',
         fill: false,
         lineTension: 0,
         pointRadius: 2.5,
@@ -1688,6 +1805,9 @@ export default {
         label: 'Allocated Obligations',
         type: 'bar',
         yAxisID: 'C',
+        // borderColor: '#6f6f6f',
+        backgroundColor: '#dcdcdc33',
+        // borderWidth: 1,
       }
       const dateMoney = []
       v.Budget.results.forEach(function (k) {
@@ -1754,7 +1874,10 @@ export default {
         2
       )
       vm.contractors[i].Trend1 =
-        Math.sign(correlationCoefficient1) === -1 ? 'negative' : 'positive'
+        Math.sign(correlationCoefficient1) === -1 ? 'Negative' : 'Positive'
+      //  if (Math.sign(correlationCoefficient1) === -1) {
+      //    vm.scatterData1[i].datasets.borderColor = '#ff1900'
+      //  }
       const correlationCoefficient2 = vm.getPearsonCorrelation(
         vm.scatterData2[i].datasets[0].data.map((a) => parseFloat(a.x)),
         vm.scatterData2[i].datasets[0].data.map((a) => parseFloat(a.y))
@@ -1765,7 +1888,10 @@ export default {
         2
       )
       vm.contractors[i].Trend2 =
-        Math.sign(correlationCoefficient2) === -1 ? 'negative' : 'positive'
+        Math.sign(correlationCoefficient2) === -1 ? 'Negative' : 'Positive'
+      //  if (Math.sign(correlationCoefficient2) === -1) {
+      //    vm.scatterData2[i].datasets.borderColor = '#ff1900'
+      //  }
       const bestLine1 = vm.findLineByLeastSquares(
         vm.scatterData1[i].datasets[0].data.map((a) => parseFloat(a.x)),
         vm.scatterData1[i].datasets[0].data.map((a) => parseFloat(a.y))
@@ -1780,8 +1906,10 @@ export default {
         data: bestLine1data,
         type: 'line',
         pointRadius: 0,
+        borderWidth: 2,
         fill: false,
-        borderColor: '#da0606',
+        borderColor:
+          Math.sign(correlationCoefficient1) === -1 ? '#ff1900' : '#00ff9f',
       })
       const bestLine2 = vm.findLineByLeastSquares(
         vm.scatterData2[i].datasets[0].data.map((a) => parseFloat(a.x)),
@@ -1797,8 +1925,10 @@ export default {
         data: bestLine2data,
         type: 'line',
         pointRadius: 0,
+        borderWidth: 2,
         fill: false,
-        borderColor: '#da0606',
+        borderColor:
+          Math.sign(correlationCoefficient2) === -1 ? '#ff1900' : '#00ff9f',
       })
     })
     this.showLine = true
@@ -1921,7 +2051,7 @@ export default {
       return newData
     },
   },
-  // #240090
+  // #ffb700
 }
 </script>
 
@@ -1938,7 +2068,7 @@ body {
 }
 h1 {
   font-family: 'Libre Barcode 39 Text', Sans-Serif;
-  font-size: 46px;
+  font-size: 54px;
   color: #ffd300;
 }
 .subhead {
