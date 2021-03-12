@@ -7,14 +7,13 @@
           <div class="pt-6 pb-8 space-y-2 md:space-y-5">
             <h1>Digital Olympics - Data Visualization</h1>
             <p>
-              Visualizing the relationships between federal budget, stock price
+              Visualizing relationships between federal DoD funding, stock price
               and Google search trends for America's
               <a
                 href="https://about.bgov.com/top-defense-contractors/"
                 target="_blank"
                 >top defense contractors</a
-              >
-              Trends calculated using the
+              >. Trends calculated using the
               <a
                 href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient"
                 target="_blank"
@@ -128,7 +127,7 @@
                             ]"
                             >{{ contractor.Trend2 }}
                           </span>
-                          correlation between congressional funding and
+                          correlation between federal DoD funding and
                           {{ contractor.Ticker }}'s stock price. (r =
                           {{ contractor.Pearson2 }})
                         </p>
