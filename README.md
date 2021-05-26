@@ -1,4 +1,6 @@
-# Digital_Olympics
+# Google Trend vs. Stock Price Analysis
+
+[view the demo here](https://iws12-digital-olympics.netlify.app/)
 
 ## Build Setup
 
